@@ -1,1 +1,1073 @@
-Hi
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Hamid Hassani | Astrophysicist building ultraviolet instrumentation, modern data products, and visual storytelling for nearby galaxies." />
+    <title>Hamid Hassani | Astrophysicist & Product Builder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #fff9f3;
+        --bg-soft: #fff0de;
+        --card: rgba(255, 255, 255, 0.9);
+        --stroke: rgba(20, 33, 61, 0.08);
+        --text: #0f172a;
+        --muted: rgba(15, 23, 42, 0.7);
+        --accent: #ff7a18;
+        --accent-2: #8f57ff;
+        --shadow: 0 25px 60px rgba(17, 24, 39, 0.12);
+        --radius-xl: 28px;
+        --radius-lg: 20px;
+        --radius: 14px;
+        --max-width: 1200px;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Space Grotesk", "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        background: linear-gradient(120deg, #fffdf8, #ffe9d7 45%, #f7e1ff 100%);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .glow {
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(circle at 15% 20%, rgba(255, 122, 24, 0.22), transparent 45%), radial-gradient(circle at 80% 10%, rgba(143, 87, 255, 0.2), transparent 40%), radial-gradient(circle at 70% 80%, rgba(255, 186, 73, 0.18), transparent 45%);
+        opacity: 0.75;
+        pointer-events: none;
+        filter: blur(80px);
+      }
+
+      header {
+        position: relative;
+        padding: 2.5rem clamp(1.5rem, 4vw, 4rem) 1.5rem;
+        max-width: calc(var(--max-width) + 8rem);
+        margin: 0 auto;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1rem 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: var(--radius-lg);
+        backdrop-filter: blur(16px);
+        background-color: rgba(255, 255, 255, 0.85);
+        position: sticky;
+        top: 1rem;
+        width: min(calc(100% - 2rem), calc(var(--max-width) + 6rem));
+        margin: 1.5rem auto 0;
+        z-index: 40;
+      }
+
+      .logo {
+        font-weight: 700;
+        letter-spacing: 0.2em;
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--muted);
+        font-size: 0.92rem;
+        padding: 0.45rem 0.9rem;
+        border-radius: 999px;
+        transition: color 0.2s ease, background-color 0.2s ease;
+      }
+
+      .nav-links a.active,
+      .nav-links a:hover {
+        color: var(--text);
+        background-color: rgba(15, 23, 42, 0.06);
+      }
+
+      .nav-cta {
+        border: 1px solid rgba(143, 87, 255, 0.4);
+        color: var(--accent-2);
+      }
+
+      .hero {
+        display: grid;
+        gap: 2.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        align-items: center;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.6rem, 4vw, 4rem);
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero p {
+        color: var(--muted);
+        font-size: 1.1rem;
+        max-width: 40ch;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-cta {
+        display: flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+      }
+
+      .hero-cta a {
+        text-decoration: none;
+        padding: 0.85rem 1.6rem;
+        border-radius: 999px;
+        font-weight: 600;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+      }
+
+      .hero-cta .primary {
+        background: linear-gradient(120deg, #ff7a18, #ffd819);
+        color: #361101;
+        box-shadow: 0 15px 40px rgba(255, 122, 24, 0.35);
+      }
+
+      .hero-cta .secondary {
+        border: 1px solid rgba(15, 23, 42, 0.15);
+        color: var(--text);
+        background-color: rgba(255, 255, 255, 0.9);
+      }
+
+      .hero-cta a:hover {
+        transform: translateY(-2px);
+      }
+
+      .profile-frame {
+        justify-self: center;
+        width: min(320px, 60vw);
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        padding: 12px;
+        background: linear-gradient(135deg, rgba(255, 122, 24, 0.8), rgba(143, 87, 255, 0.8));
+        position: relative;
+        align-self: flex-start;
+        margin-top: -1.5rem;
+      }
+
+      .profile-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 6px solid rgba(255, 255, 255, 0.85);
+        background: #fff;
+        box-shadow: 0 25px 40px rgba(17, 24, 39, 0.15);
+      }
+
+      main {
+        padding: 0 clamp(1.5rem, 4vw, 4rem) 5rem;
+        max-width: calc(var(--max-width) + 8rem);
+        margin: 0 auto;
+      }
+
+      section {
+        margin-top: 4.5rem;
+      }
+
+      header,
+      section {
+        scroll-margin-top: 120px;
+      }
+
+      .section-title {
+        font-size: clamp(2rem, 3.3vw, 3rem);
+        margin-bottom: 1.2rem;
+      }
+
+      .section-subtitle {
+        color: var(--muted);
+        max-width: 60ch;
+        margin-bottom: 2.2rem;
+      }
+
+      .two-column {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.6rem;
+      }
+
+      .spotlight {
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.5rem;
+        align-items: center;
+      }
+
+      .spotlight-wrapper {
+        margin-top: 3.5rem;
+      }
+
+      .spotlight-carousel {
+        position: relative;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: 0 25px 45px rgba(17, 24, 39, 0.18);
+        min-height: clamp(620px, 70vh, 820px);
+      }
+
+      .spotlight-carousel img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .spotlight ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+        padding-left: 0;
+      }
+
+      .spotlight li {
+        position: relative;
+        padding-left: 1.4rem;
+        line-height: 1.4;
+      }
+
+      .spotlight li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.45rem;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background: var(--accent-2);
+        transform: translateY(-50%);
+      }
+
+      .card {
+        padding: 1.5rem;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--stroke);
+        background-color: var(--card);
+        box-shadow: var(--shadow);
+      }
+
+      .slider {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--radius-xl);
+      }
+
+      .slider > img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .slider > img.active {
+        opacity: 1;
+      }
+
+      .full-bleed {
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+      }
+
+      .neloura-hero {
+        margin: 5rem 0 4rem;
+        padding: 0;
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+      }
+
+      .neloura-slider {
+        border-radius: 0;
+        min-height: clamp(700px, 100vh, 960px);
+        width: 100%;
+        box-shadow: 0 65px 130px rgba(15, 23, 42, 0.35);
+      }
+
+      .neloura-slider img {
+        object-fit: cover;
+        filter: saturate(1.15);
+      }
+
+      .neloura-slider::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(120deg, rgba(4, 7, 18, 0.45), rgba(4, 7, 18, 0.08));
+        pointer-events: none;
+      }
+
+      .neloura-overlay {
+        position: absolute;
+        inset: 12% auto auto 8%;
+        max-width: min(550px, 70vw);
+        padding: 2rem;
+        border-radius: 28px;
+        backdrop-filter: blur(22px);
+        background: rgba(3, 7, 18, 0.42);
+        color: #fff;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .neloura-overlay h3 {
+        font-size: clamp(2rem, 4vw, 3.4rem);
+        line-height: 1.05;
+      }
+
+      .neloura-overlay p {
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .neloura-brand {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        flex-wrap: wrap;
+      }
+
+      .neloura-logo {
+        width: clamp(110px, 18vw, 150px);
+        height: auto;
+        padding: 0.85rem 1rem;
+        border-radius: 32px;
+            position: absolute;
+    right: 0;
+    opacity: 0.4;
+    background: none;
+    box-shadow: none;
+    backdrop-filter: none;
+  
+      }
+
+      .neloura-brand-copy {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+
+      .neloura-brand-copy .pill {
+        margin-bottom: 0;
+      }
+
+      .neloura-overlay ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+        padding-left: 0;
+      }
+
+      .neloura-overlay li {
+        display: flex;
+        gap: 0.4rem;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .neloura-overlay li strong {
+        color: #fff;
+      }
+
+      .neloura-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 0.25rem;
+      }
+
+      .neloura-btn {
+        text-decoration: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 999px;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+        transition: transform 0.2s ease, opacity 0.2s ease;
+      }
+
+      .neloura-btn.github {
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        color: #fff;
+      }
+
+      .neloura-btn.cloud {
+        background: linear-gradient(120deg, #ff7a18, #ffd819);
+        color: #2b0c00;
+      }
+
+      .neloura-btn:hover {
+        transform: translateY(-2px);
+        opacity: 0.9;
+      }
+
+      .neloura-slider .slider-controls {
+        position: absolute;
+        bottom: 3rem;
+        right: 5vw;
+      }
+
+      .papers-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+      }
+
+      .paper-card {
+        display: grid;
+        grid-template-columns: minmax(280px, 1fr) minmax(300px, 1fr);
+        gap: 2.5rem;
+        align-items: center;
+        padding: 0;
+        border: none;
+        background: transparent;
+        box-shadow: none;
+      }
+
+      .paper-figure {
+        position: relative;
+        min-height: 360px;
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        box-shadow: 0 25px 60px rgba(15, 23, 42, 0.2);
+        background: radial-gradient(circle at 20% 20%, rgba(255, 122, 24, 0.2), rgba(143, 87, 255, 0.2));
+      }
+
+      .paper-figure img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .paper-figure.slider img {
+        object-fit: contain;
+        padding: 1.5rem;
+        background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.9), transparent 70%);
+      }
+
+      .paper-figure.slider img.active {
+        opacity: 1;
+      }
+
+      .slider-controls {
+        position: absolute;
+        bottom: 1.25rem;
+        right: 1.25rem;
+        display: flex;
+        gap: 0.5rem;
+        z-index: 3;
+      }
+
+      .slider-control {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        background: rgba(0, 0, 0, 0.35);
+        color: #fff;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.2s ease;
+      }
+
+      .slider-control.active {
+        background: linear-gradient(120deg, #ff7a18, #8f57ff);
+        border-color: transparent;
+        transform: scale(1.05);
+      }
+
+      .paper-figure.twin img {
+        position: absolute;
+        inset: 0;
+        width: 80%;
+        height: 80%;
+        margin: auto;
+        border-radius: 28px;
+        box-shadow: 0 15px 45px rgba(15, 23, 42, 0.25);
+      }
+
+      .paper-figure.twin img.secondary {
+        width: 60%;
+        height: 60%;
+        right: 8%;
+        top: 10%;
+        transform: rotate(8deg);
+        z-index: 1;
+      }
+
+      .paper-figure.twin img.primary {
+        left: 8%;
+        bottom: 10%;
+        transform: rotate(-6deg);
+        z-index: 2;
+      }
+
+      .paper-figure.cover {
+        background-size: cover;
+        background-position: center;
+      }
+
+      .paper-figure.cover::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.55), transparent 60%);
+      }
+
+      .paper-body {
+        padding: 2rem;
+        border-radius: var(--radius-xl);
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(20, 33, 61, 0.08);
+        box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+      }
+
+      .paper-body h3 {
+        margin-bottom: 0.4rem;
+      }
+
+      .paper-body p {
+        color: var(--muted);
+      }
+
+      .paper-card a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        margin-top: 0.4rem;
+        color: var(--accent-2);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .neloura-section {
+        margin-top: 4.5rem;
+      }
+
+      .neloura-shell {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+        align-items: stretch;
+      }
+
+      .neloura-media {
+        min-height: 420px;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        box-shadow: 0 25px 70px rgba(15, 23, 42, 0.2);
+      }
+
+      .neloura-copy {
+        padding: 2rem;
+        border-radius: var(--radius-xl);
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid rgba(20, 33, 61, 0.08);
+        box-shadow: 0 25px 45px rgba(15, 23, 42, 0.12);
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .neloura-copy h3 {
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        line-height: 1.1;
+      }
+
+      .neloura-features {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        padding-left: 0;
+      }
+
+      .neloura-features li {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .neloura-features strong {
+        color: var(--text);
+      }
+
+      .muted {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        background-color: rgba(255, 122, 24, 0.12);
+        color: #ff7a18;
+        font-size: 0.8rem;
+        padding: 0.2rem 0.65rem;
+        border-radius: 999px;
+        margin-bottom: 0.8rem;
+      }
+
+      .imagery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1rem;
+      }
+
+      .imagery-grid figure {
+        border-radius: var(--radius-xl);
+        border: 1px solid var(--stroke);
+        overflow: hidden;
+        position: relative;
+        min-height: 280px;
+        background-size: cover;
+        background-position: center;
+        box-shadow: var(--shadow);
+        isolation: isolate;
+      }
+
+      .imagery-grid figcaption {
+        position: absolute;
+        inset: auto 0 0 0;
+        padding: 1rem;
+        background: linear-gradient(180deg, transparent, rgba(15, 23, 42, 0.7));
+        font-weight: 600;
+      }
+
+      .timeline {
+        border-left: 2px solid rgba(143, 87, 255, 0.35);
+        padding-left: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.7rem;
+      }
+
+      .timeline-item {
+        position: relative;
+        padding-left: 0.5rem;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -2.32rem;
+        top: 0.3rem;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: linear-gradient(120deg, #ff7a18, #8f57ff);
+        box-shadow: 0 0 24px rgba(73, 190, 254, 0.6);
+      }
+
+      .timeline-item h4 {
+        margin-bottom: 0.2rem;
+      }
+
+      .contact-panel {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1rem;
+      }
+
+      .contact-card strong {
+        display: block;
+        font-size: 0.95rem;
+        color: var(--muted);
+      }
+
+      .contact-card a {
+        color: var(--accent-2);
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .contact-card a:hover {
+        text-decoration: underline;
+      }
+
+      footer {
+        padding: 3rem clamp(1.5rem, 4vw, 4rem);
+        text-align: center;
+        color: var(--muted);
+      }
+
+      @media (max-width: 960px) {
+        .paper-card {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .paper-body {
+          padding: 1.5rem;
+        }
+
+        .paper-figure {
+          min-height: 280px;
+        }
+      }
+
+      @media (max-width: 720px) {
+        nav {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .hero-cta {
+          width: 100%;
+        }
+
+        .hero-cta a {
+          flex: 1;
+          text-align: center;
+        }
+
+        .timeline {
+          border: none;
+          padding-left: 0;
+        }
+
+        .timeline-item::before {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="glow" aria-hidden="true"></div>
+    <nav>
+      <div class="logo">HAMID HASSANI</div>
+      <ul class="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#neloura">Neloura</a></li>
+        <li><a href="#papers">Papers</a></li>
+        <li><a class="nav-cta" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <header id="home">
+      <section class="hero">
+        <div>
+          <h1>
+            Hamid Hassani<br />
+          </h1>
+                    <p class="pill">PhD candidate at the University of Alberta</p>
+          <p>
+I study how stars, stellar clusters, and the ISM evolve across cosmic time using JWST, HST, and VLA data within PHANGS, and I developed Neloura, a platform for astronomical image visualization, cataloging, SED inspection, and interactive source finding designed for the next generation of datasets such as SKA.          <div class="hero-cta">
+            <a class="primary" href="https://apps.ualberta.ca/directory/person/hhassani/cv" target="_blank" rel="noreferrer">Download CV</a>
+            <a class="secondary" href="#papers">See First-Author Papers</a>
+          </div>
+        </div>
+        <div class="profile-frame">
+          <img src="assets/hamid-hero.jpg" alt="Hamid Hassani smiling in a colorful setting" />
+        </div>
+      </section>
+    </header>
+    <main>
+      <section id="about">
+        <h2 class="section-title">Research focus</h2>
+        <p class="section-subtitle">
+I am currently focused on multi-wavelength diagnostics that connect dust physics, stellar clusters, and the ISM across nearby galaxies, combining infrared, optical, ultraviolet, millimeter, and radio observations with advanced visualization tools to uncover how stellar clusters evolve and how feedback, dust, and environment shape their emission.
+        </p>
+        <div class="two-column">
+          <article class="card">
+            <h3>Observational programs</h3>
+            <ul>
+<li>AstroSat/UVIT: PHANGS–AstroSat–Color Survey (PI; 12 hr)</li>
+<li>AstroSat/UVIT: PHANGS–AstroSat–Dwarfs Survey (PI; 15 hr)</li>
+<li>JWST: PHANGS–JWST Treasury  (Co-I; 150 hr total)</li>
+<li>JWST: Massive star formation in galactic centres (Co-I; 62 hr)</li>
+<li>HST: Cycles 31–32 cluster & dust mapping (Co-I; 288 orbits)</li>
+<li>HST: HST+JWST+ALMA Treasury survey (Co-I; 169 orbits)</li>
+<li>ALMA: The 10 pc Survey of Molecular Clouds & Feedback (Co-I; 600+ hr)</li>
+<li>MeerKAT: PHANGS dwarf-galaxy atomic gas mapping (Co-PI; 60 hr)</li>
+
+            </ul>
+          </article>
+          <article class="card">
+           <h3>What I deliver</h3>
+<ul>
+  <li>AstroSat UVIT imaging of nearby galaxies · high-resolution UV maps  
+      <a href="https://www.phangs.org/home/data/astrosat" target="_blank">[PHANGS–AstroSat Atlas]</a>  
+      <a href="https://www.canfar.net/storage/vault/list/phangs/RELEASES/" target="_blank">[Public Data Releases]</a></li>
+
+<li>Open-source visualization and catalog tools (Neloura) for JWST/ALMA/HST/VLA  
+    <a href="https://github.com/hamidnpc/Neloura" target="_blank">[GitHub]</a>
+</li>
+</ul>
+ 
+
+          </article>
+        </div>
+      </section>
+
+      <section id="neloura" class="neloura-hero full-bleed">
+        <div class="neloura-slider slider" data-slider="neloura">
+          <img src="assets/nl1.png" alt="Neloura interface showing multi-panel FITS workflows" class="active" data-index="0" />
+          <img src="assets/nl2.png" alt="Neloura catalog overlays and diagnostics" data-index="1" />
+         <img src="assets/nl3.png" alt="Neloura catalog overlays and diagnostics" data-index="2" />
+          <img src="assets/nl4.png" alt="Neloura catalog overlays and diagnostics" data-index="3" />
+
+          <div class="neloura-overlay">
+            <div class="neloura-brand">
+              <div class="neloura-brand-copy">
+                <span class="pill">Next-gen astronomical image visualization and analysis.</span>
+                <h3>Neloura</h3>
+              </div>
+            </div>
+            <p>
+            Powered by Python and JavaScript, Neloura delivers in-browser visualization of large astronomical mosaics, catalogs, SEDs, and interactive source finding—no installation required. It is designed for the massive datasets expected from SKA, Roman, and other next-generation missions.
+            </p>
+            <div class="neloura-actions">
+              <a class="neloura-btn github" href="https://github.com/hamidnpc/Neloura/" target="_blank" rel="noreferrer">View on GitHub</a>
+              <a class="neloura-btn cloud" href="https://neloura.com" target="_blank" rel="noreferrer">Launch cloud version</a>
+            </div>
+          </div>
+          <div class="slider-controls">
+            <button type="button" class="slider-control active" data-target="0">01</button>
+            <button type="button" class="slider-control" data-target="1">02</button>
+            <button type="button" class="slider-control" data-target="2">03</button>
+            <button type="button" class="slider-control" data-target="3">04</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="spotlight-wrapper">
+        <article class="spotlight card">
+          <div class="spotlight-carousel slider" data-slider="advocacy">
+            <img src="assets/hamid-award.jpg" alt="Hamid Hassani celebrating at the University of Alberta Celebrate Awards 2023" class="active" data-index="0" />
+            <img src="assets/x1.jpeg" alt="Hamid Hassani speaking at advocacy event" data-index="1" />
+            <div class="slider-controls">
+              <button type="button" class="slider-control active" data-target="0">01</button>
+              <button type="button" class="slider-control" data-target="1">02</button>
+            </div>
+          </div>
+          <div>
+            <h3>Advocacy & representation</h3>
+            <p class="muted">Student governance roles that keep my research accountable to people first.</p>
+            <ul>
+     <li>Vice President External, Graduate Students' Association (GSA) · Led provincial and municipal advocacy for 10,000+ graduate students (2023–2024).</li>
+
+<li>Co-Chair, Alberta Graduate Provincial Advocacy Council (ab-GPAC) · Coordinated province-wide policy efforts for 20,000+ graduate students (2023–2024).</li>
+
+<li>Vice-Chair, Edmonton Student Alliance (ESA) · Represented nearly 100,000 post-secondary students across Edmonton to city leadership (2023–2024).</li>
+
+<li>Graduate Student Representative, University of Alberta Alumni Council · Provided student voice and policy input at the institutional level (2023–2024).</li>
+
+<li>Ambassador, Graduate Physics Student Association (GPSA) · Supporting departmental community and governance (2024).</li>
+
+
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <section id="papers">
+        <h2 class="section-title">Published papers as first author</h2>
+        <p class="section-subtitle">
+Recent lead-author work using multi-wavelength data from JWST, HST, ALMA, and AstroSat, with each entry noting the analysis or tools I led.        </p>
+        <div class="papers-grid">
+          <article class="card paper-card">
+            <div class="paper-figure slider" data-slider="hidden-life">
+              <img src="assets/1.png" alt="JWST mid-infrared composite of nearby galaxies" class="active" data-index="0" />
+              <img src="assets/2.png" alt="Source catalog overlays from the Hidden Life of Stars paper" data-index="1" />
+              <img src="assets/x1.png" alt="Source catalog overlays from the Hidden Life of Stars paper" data-index="2" />
+
+              <div class="slider-controls">
+                <button type="button" class="slider-control active" data-target="0">01</button>
+                <button type="button" class="slider-control" data-target="1">02</button>
+                                <button type="button" class="slider-control" data-target="2">03</button>
+
+              </div>
+            </div>
+            <div class="paper-body">
+              <span class="pill">2025 · arXiv e-prints</span>
+              <h3>The Hidden Life of Stars: Embedded Beginnings to AGB Endings in the PHANGS-JWST Sample. I. Catalog of Mid-IR Sources</h3>
+              <p>
+My research with JWST has defined a new framework for tracing how stellar clusters evolve from their dusty, embedded birth to their exposed and evolved stages across nearby galaxies. I led the first systematic censuses of compact mid-infrared sources using JWST imaging, identifying and characterizing tens of thousands of stellar clusters spanning the full evolutionary sequence—from deeply embedded stellar clusters to red-supergiant and AGB-dominated populations.
+
+
+              </p>
+              <a href="https://doi.org/10.48550/arXiv.2509.16459" target="_blank" rel="noreferrer">Read on arXiv →</a>
+            </div>
+          </article>
+          <article class="card paper-card">
+            <div class="paper-figure">
+              <img src="assets/astrosat_poster_png_1.jpg" alt="AstroSat ultraviolet atlas montage" />
+            </div>
+            <div class="paper-body">
+              <span class="pill">2024 · ApJS</span>
+              <h3>The PHANGS-AstroSat Atlas of Nearby Star-forming Galaxies</h3>
+              <p>
+Using AstroSat/UVIT, I calibrated over 150 maps of 31 nearby galaxies at ~1.4″ (25–160 pc) resolution, providing the sharpest wide-field UV images across 9 filters from 1480 Å to 2790 Å. Combined with MUSE Hα and ALMA CO(2–1) data, these maps reveal that the FUV/Hα ratio varies by nearly two dex, decreasing in high-pressure centers and bars—evidence that clusters clear their natal gas more rapidly in dense environments. After correcting for attenuation and controlling for stellar mass and metallicity, FUV/Hα increases with stellar population age, tracing cluster emergence as H II regions fade. We also identified extended ultraviolet disks—faint, outer-disk structures marking recent star formation beyond the optical radius. 
+
+              </p>
+              <a href="https://doi.org/10.3847/1538-4365/ad152c" target="_blank" rel="noreferrer">Read the paper →</a>
+              <a href="https://www.phangs.org/home/data/astrosat" target="_blank" rel="noreferrer">Data→</a>
+
+            </div>
+          </article>
+          <article class="card paper-card">
+            <div class="paper-figure">
+              <img src="assets/age_1.jpg" alt="21 micron compact source population visualization" />
+            </div>
+            <div class="paper-body">
+              <span class="pill">2023 · ApJL</span>
+              <h3>PHANGS-JWST First Results: The 21 µm Compact Source Population</h3>
+              <p>
+My research asks how long massive clusters remain hidden in their dusty, embedded phase before emerging as feedback-dominated systems. I find that such regions are rare in nearby galaxies, implying a short lifetime of only a few million years. Combining mid-infrared and optical diagnostics, I show that 21 µm emission robustly traces nascent (< 5 Myr) clusters and correlates tightly with Hα emission over five orders of magnitude
+
+              </p>
+              <a href="https://doi.org/10.3847/2041-8213/aca8ab" target="_blank" rel="noreferrer">Read the letter →</a>
+            </div>
+          </article>
+          <article class="card paper-card">
+            <div class="paper-figure">
+              <img src="assets/b22.png" alt="Spectral energy distribution fit for the Magellanic Clouds" />
+            </div>
+            <div class="paper-body">
+              <span class="pill">2022 · MNRAS</span>
+              <h3>The Role of Thermal and Non-thermal Processes in the ISM of the Magellanic Clouds</h3>
+              <p>
+Using single-dish and interferometric observations spanning three frequency bands from 0.16 to 4.8 GHz—including GLEAM/MWA (166 MHz) as the low-frequency SKA precursor, and ATCA and Parkes data—I combined multi-band radio maps with de-reddened Hα emission to produce the spatially resolved thermal and non-thermal component maps of the Magellanic Clouds. Whereas previous studies have established that cosmic-ray electrons steepen their synchrotron spectra as they propagate, and that magnetic-field strength correlates with the star formation rate, my study goes further. Using resolved radio continuum maps of these metal-poor galaxies, I demonstrate for the first time across ISM phases that non-thermal (cosmic-ray + magnetic-field) energy dominates the ISM under equipartition, and that magnetic-field amplification and cosmic-ray feedback are tightly coupled to the star formation rate even in low-metallicity regimes.
+
+
+
+              </p>
+              <a href="https://doi.org/10.1093/mnras/stab3202" target="_blank" rel="noreferrer">Read on MNRAS →</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+     
+
+  
+      <section id="contact">
+        <h2 class="section-title">Contact & availability</h2>
+        <div class="contact-panel">
+          <article class="card contact-card">
+            <strong>Email</strong>
+            hhassani@ualberta.ca
+          </article>
+          <article class="card contact-card">
+            <strong>GitHub</strong>
+            <a href="https://github.com/hamidnpc" target="_blank" rel="noreferrer">github.com/hamidnpc</a>
+          </article>
+          <article class="card contact-card">
+            <strong>LinkedIn</strong>
+            <a href="https://www.linkedin.com/in/hamid-hassani/" target="_blank" rel="noreferrer">linkedin.com/in/hamid-hassani/</a>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer>
+      © <span id="year"></span> Hamid Hassani
+    </footer>
+
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const id = entry.target.getAttribute("id");
+            const link = document.querySelector(`.nav-links a[href="#${id}"]`);
+            if (entry.isIntersecting && link) {
+              document.querySelectorAll(".nav-links a").forEach((l) => l.classList.remove("active"));
+              link.classList.add("active");
+            }
+          });
+        },
+        { threshold: 0.35 }
+      );
+
+      document.querySelectorAll("main section, header").forEach((section) => {
+        if (section.id) observer.observe(section);
+      });
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      document.querySelectorAll(".slider").forEach((slider) => {
+        const slides = slider.querySelectorAll('img[data-index]');
+        const buttons = slider.querySelectorAll(".slider-control");
+
+        if (!slides.length) return;
+
+        let currentIndex = 0;
+
+        const showSlide = (index) => {
+          currentIndex = index;
+          slides.forEach((img, idx) => {
+            img.classList.toggle("active", idx === index);
+          });
+          buttons.forEach((btn, idx) => {
+            btn.classList.toggle("active", idx === index);
+          });
+        };
+
+        if (buttons.length) {
+          buttons.forEach((button) => {
+            button.addEventListener("click", () => {
+              const target = Number(button.dataset.target);
+              showSlide(target);
+            });
+          });
+        }
+
+        const delay = Number(slider.dataset.interval) || 5000;
+        let autoplayId;
+
+        const startAutoplay = () => {
+          if (slides.length < 2) return;
+          stopAutoplay();
+          autoplayId = setInterval(() => {
+            const nextIndex = (currentIndex + 1) % slides.length;
+            showSlide(nextIndex);
+          }, delay);
+        };
+
+        const stopAutoplay = () => {
+          if (autoplayId) clearInterval(autoplayId);
+        };
+
+        slider.addEventListener("mouseenter", stopAutoplay);
+        slider.addEventListener("mouseleave", startAutoplay);
+
+        showSlide(0);
+        startAutoplay();
+      });
+
+    </script>
+  </body>
+</html>
