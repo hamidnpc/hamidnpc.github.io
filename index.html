@@ -716,6 +716,37 @@
         padding: 2rem;
       }
 
+      .compare-tabs {
+        display: inline-flex;
+        gap: 0.6rem;
+        margin: 0 0 0.9rem;
+        flex-wrap: wrap;
+      }
+
+      .compare-tab {
+        border: 1px solid rgba(15, 23, 42, 0.12);
+        background: rgba(255, 255, 255, 0.78);
+        color: rgba(15, 23, 42, 0.82);
+        padding: 0.55rem 0.85rem;
+        border-radius: 999px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+
+      .compare-tab:hover {
+        transform: translateY(-1px);
+      }
+
+      .compare-tab.active {
+        color: #fff;
+        border-color: transparent;
+        background: linear-gradient(120deg, #6d28d9, #8b5cf6, #a78bfa);
+        box-shadow: 0 12px 25px rgba(109, 40, 217, 0.22);
+      }
+
       .compare-slider {
         --pos: 50%;
         position: relative;
@@ -738,6 +769,13 @@
         object-fit: cover;
         -webkit-user-drag: none;
         pointer-events: none;
+      }
+
+      /* Slight zoom for the NGC 3627 comparison to match framing */
+      .compare-slider[data-compare-active="ngc3627"] img.compare-bottom,
+      .compare-slider[data-compare-active="ngc3627"] img.compare-top {
+        transform: scale(1.3);
+        transform-origin: center;
       }
 
       .compare-slider .compare-top {
@@ -1232,13 +1270,19 @@ From 2023 to 2024, I served in several leadership and advocacy roles dedicated t
               Traditionally, radio and infrared star-formation tracers have been calibrated using integrated galaxy measurements, where diverse regions are spatially blended and the underlying physics is effectively averaged. Establishing the radio–mid-infrared connection on the scale of individual star-forming regions and stellar clusters is therefore essential, as it enables phase-resolved tracking of cluster evolution (from embedded to exposed), isolates environmental dependencies, and provides dust-insensitive diagnostics in regimes where optical tracers break down.            </p>
           </article>
 
-          <figure class="compare-slider" data-compare="true" data-autoplay="true" aria-label="Image comparison: slide to compare two views">
-            <img class="compare-bottom" src="assets/11.png" alt="Current research image 1" draggable="false" />
-            <img class="compare-top" src="assets/22.png" alt="Current research image 2" draggable="false" />
-            <div class="slider-credit top left active" data-compare-for="top">
-              VLA 3GHz
+          <div>
+            <div class="compare-tabs" role="tablist" aria-label="Select galaxy">
+              <button type="button" class="compare-tab active" data-compare-set="ngc4254">NGC 4254</button>
+              <button type="button" class="compare-tab" data-compare-set="ngc3627">NGC 3627</button>
             </div>
-            <div class="slider-credit top right" data-compare-for="bottom">
+
+            <figure class="compare-slider" data-compare="true" data-autoplay="true" data-compare-active="ngc4254" aria-label="Image comparison: slide to compare two views">
+              <img class="compare-bottom" src="assets/11.png" alt="NGC 4254 VLA+Effelsberg 8 GHz map" draggable="false" />
+              <img class="compare-top" src="assets/22.png" alt="NGC 4254 VLA 3 GHz map" draggable="false" />
+            <div class="slider-credit top left active" data-compare-for="top">
+              New VLA 3GHZ
+            </div>
+            <div class="slider-credit top right active" data-compare-for="bottom">
               VLA+Effelsberg 8GHz
             </div>
 
@@ -1250,7 +1294,8 @@ From 2023 to 2024, I served in several leadership and advocacy roles dedicated t
             </div>
             <div class="compare-handle" aria-hidden="true"></div>
             <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Compare images" />
-          </figure>
+            </figure>
+          </div>
         </div>
       </section>
 
@@ -1507,6 +1552,13 @@ Using single-dish and interferometric observations spanning three frequency band
         const range = slider.querySelector(".compare-range");
         if (!range) return;
         const labels = slider.querySelectorAll("[data-compare-for]");
+        const tabs = slider.parentElement?.querySelectorAll?.(".compare-tab") || [];
+        const imgBottom = slider.querySelector("img.compare-bottom");
+        const imgTop = slider.querySelector("img.compare-top");
+        const labelTop = slider.querySelector('.slider-credit.top.left[data-compare-for="top"]');
+        const labelBottom = slider.querySelector('.slider-credit.top.right[data-compare-for="bottom"]');
+        const creditTop = slider.querySelector('.slider-credit.left:not(.top)[data-compare-for="top"]');
+        const creditBottom = slider.querySelector('.slider-credit.right:not(.top)[data-compare-for="bottom"]');
 
         const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
         let activeSide = "top";
@@ -1636,6 +1688,62 @@ Using single-dish and interferometric observations spanning three frequency band
           slider.addEventListener("pointerdown", stopAutoplay, { once: true });
           range.addEventListener("input", stopAutoplay, { once: true });
         }
+
+        // Galaxy toggle: swap images + credits, and reset slider position.
+        const sets = {
+          ngc4254: {
+            bottomSrc: "assets/11.png",
+            topSrc: "assets/22.png",
+            bottomAlt: "NGC 4254 VLA+Effelsberg 8 GHz map",
+            topAlt: "NGC 4254 VLA 3 GHz map",
+            labelTop: "New VLA 3GHZ",
+            labelBottom: "VLA+Effelsberg 8GHz",
+            creditTop: "Hassani et al. in prep 2025",
+            creditBottom: "K.T. Chyzy, M. Ehle, R. Beck 2007 A\u0026A."
+          },
+          ngc3627: {
+            bottomSrc: "assets/3627_vla_eff.png",
+            topSrc: "assets/3627_vla.png",
+            bottomAlt: "NGC 3627 VLA+Effelsberg 4.85 GHz map",
+            topAlt: "NGC 3627 VLA 3 GHz map",
+            labelTop: "New VLA 3GHZ",
+            labelBottom: "VLA+Effelsberg 4.85Ghz",
+            creditTop: "Hassani et al. in prep",
+            creditBottom: "Soida, M.; Urbanik, M.; Beck, R.; Wielebinski, R.; Balkowski, C. A\u0026A 2001"
+          }
+        };
+
+        const applySet = (key) => {
+          const s = sets[key];
+          if (!s) return;
+          slider.dataset.compareActive = key;
+          if (imgBottom) {
+            imgBottom.src = s.bottomSrc;
+            imgBottom.alt = s.bottomAlt;
+          }
+          if (imgTop) {
+            imgTop.src = s.topSrc;
+            imgTop.alt = s.topAlt;
+          }
+          if (labelTop) labelTop.textContent = s.labelTop;
+          if (labelBottom) labelBottom.textContent = s.labelBottom;
+          if (creditTop) creditTop.textContent = s.creditTop;
+          if (creditBottom) creditBottom.textContent = s.creditBottom;
+          setPos(50);
+        };
+
+        if (tabs.length) {
+          tabs.forEach((btn) => {
+            btn.addEventListener("click", () => {
+              const key = btn.dataset.compareSet;
+              tabs.forEach((b) => b.classList.toggle("active", b === btn));
+              applySet(key);
+            });
+          });
+        }
+
+        // Ensure labels match the active set on initial load.
+        applySet(slider.dataset.compareActive || "ngc4254");
       });
 
     </script>
