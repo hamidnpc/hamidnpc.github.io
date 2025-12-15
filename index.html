@@ -489,6 +489,85 @@
         z-index: 3;
       }
 
+      .slider-credit {
+        position: absolute;
+        bottom: 1rem;
+        z-index: 3;
+        padding: 0.45rem 0.75rem;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.92);
+        background: rgba(15, 23, 42, 0.45);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        box-shadow: 0 14px 35px rgba(15, 23, 42, 0.28);
+        opacity: 0;
+        transform: translateY(6px);
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        pointer-events: none;
+      }
+
+      .slider-credit.left {
+        left: 1rem;
+      }
+
+      .slider-credit.right {
+        right: 1rem;
+      }
+
+      .slider-credit.top {
+        top: 1rem;
+        bottom: auto;
+      }
+
+      .slider-credit.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .slider-credit.small {
+        font-size: 0.76rem;
+        font-weight: 600;
+        max-width: min(520px, calc(100% - 2rem));
+        white-space: normal;
+        line-height: 1.25;
+      }
+
+      .slider-caption {
+        position: absolute;
+        left: 1rem;
+        bottom: 1rem;
+        z-index: 3;
+        padding: 0.65rem 0.85rem;
+        border-radius: 16px;
+        font-size: 0.86rem;
+        font-weight: 600;
+        color: rgba(15, 23, 42, 0.92);
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+        max-width: min(560px, calc(100% - 7.5rem));
+        white-space: normal;
+        line-height: 1.25;
+        opacity: 0;
+        transform: translateY(6px);
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        pointer-events: none;
+      }
+
+      .slider-caption.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .slider-caption.static {
+        max-width: calc(100% - 2rem);
+      }
+
       .slider-control {
         width: 38px;
         height: 38px;
@@ -545,6 +624,25 @@
         background: linear-gradient(135deg, rgba(15, 23, 42, 0.55), transparent 60%);
       }
 
+      .paper-figure-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .paper-figure-caption {
+        padding: 0.85rem 1rem;
+        color: rgba(15, 23, 42, 0.9);
+        background: rgba(255, 255, 255, 0.84);
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        border-radius: 16px;
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        line-height: 1.25;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
       .paper-body {
         padding: 2rem;
         border-radius: var(--radius-xl);
@@ -572,6 +670,115 @@
         color: var(--accent-2);
         text-decoration: none;
         font-weight: 600;
+      }
+
+      .research-grid {
+        display: grid;
+        grid-template-columns: minmax(320px, 1fr) minmax(320px, 1fr);
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .current-research-copy {
+        padding: 2rem;
+      }
+
+      .compare-slider {
+        --pos: 50%;
+        position: relative;
+        min-height: 420px;
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        box-shadow: 0 25px 60px rgba(15, 23, 42, 0.2);
+        background: radial-gradient(circle at 20% 20%, rgba(255, 122, 24, 0.2), rgba(143, 87, 255, 0.2));
+        touch-action: none;
+        user-select: none;
+        cursor: ew-resize;
+      }
+
+      .compare-slider img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        -webkit-user-drag: none;
+        pointer-events: none;
+      }
+
+      .compare-slider .compare-top {
+        clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+        will-change: clip-path;
+      }
+
+      .compare-slider .compare-handle {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: var(--pos);
+        transform: translateX(-50%);
+        width: 3px;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.2), 0 12px 25px rgba(15, 23, 42, 0.25);
+        z-index: 3;
+        pointer-events: none;
+      }
+
+      .compare-slider .compare-handle::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: rgba(15, 23, 42, 0.42);
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 18px 35px rgba(15, 23, 42, 0.25);
+      }
+
+      .compare-slider .compare-handle::before {
+        content: "↔";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        font-weight: 700;
+        z-index: 1;
+      }
+
+      .compare-slider .compare-range {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: ew-resize;
+        z-index: 4;
+      }
+
+      @keyframes compareKnobPulse {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.06);
+        }
+      }
+
+      .compare-slider:not(.dragging) .compare-handle::after {
+        animation: compareKnobPulse 1.7s ease-in-out infinite;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .compare-slider:not(.dragging) .compare-handle::after {
+          animation: none;
+        }
       }
 
       .neloura-section {
@@ -767,6 +974,15 @@
         .paper-figure {
           min-height: 280px;
         }
+
+        .research-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .compare-slider {
+          min-height: 320px;
+        }
       }
 
       @media (max-width: 720px) {
@@ -803,7 +1019,10 @@
         <li><a href="#home" class="active">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#neloura">Neloura</a></li>
+        <li><a href="#advocacy">Advocacy</a></li>
+        <li><a href="#current-research">Current research</a></li>
         <li><a href="#papers">Papers</a></li>
+        <li><a href="#videos">Talks</a></li>
         <li><a class="nav-cta" href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -817,6 +1036,7 @@
           <p>
 I study how stars, stellar clusters, and the ISM evolve across cosmic time using JWST, HST, and VLA data within PHANGS, and I developed Neloura, a platform for astronomical image visualization, cataloging, SED inspection, and interactive source finding designed for the next generation of datasets such as SKA.          <div class="hero-cta">
             <a class="primary" href="https://apps.ualberta.ca/directory/person/hhassani/cv" target="_blank" rel="noreferrer">Download CV</a>
+            <a class="secondary" href="https://ui.adsabs.harvard.edu/public-libraries/Em8inMPHRPC1EjAoulbpqQ" target="_blank" rel="noreferrer">My papers on ADS</a>
             <a class="secondary" href="#papers">See First-Author Papers</a>
           </div>
         </div>
@@ -894,11 +1114,17 @@ I am currently focused on multi-wavelength diagnostics that connect dust physics
         </div>
       </section>
 
-      <section class="spotlight-wrapper">
+      <section id="advocacy" class="spotlight-wrapper">
         <article class="spotlight card">
-          <div class="spotlight-carousel slider" data-slider="advocacy">
+          <div class="spotlight-carousel slider" data-slider="advocacy" data-interval="3500" data-pause-on-hover="false">
             <img src="assets/hamid-award.jpg" alt="Hamid Hassani celebrating at the University of Alberta Celebrate Awards 2023" class="active" data-index="0" />
             <img src="assets/x1.jpeg" alt="Hamid Hassani speaking at advocacy event" data-index="1" />
+            <div class="slider-credit small left active" data-caption-index="0">
+              Photography credit: Christy Dean · University of Alberta (ualberta.ca)
+            </div>
+            <div class="slider-credit small left" data-caption-index="1">
+              Credit: The Graduate Students’ Association of the University of Alberta
+            </div>
             <div class="slider-controls">
               <button type="button" class="slider-control active" data-target="0">01</button>
               <button type="button" class="slider-control" data-target="1">02</button>
@@ -918,6 +1144,43 @@ From 2023 to 2024, I served in several leadership and advocacy roles dedicated t
         </article>
       </section>
 
+      <section id="current-research">
+        <h2 class="section-title">Current research</h2>
+        <p class="section-subtitle">
+          I focus on how stars and stellar clusters emerge from dust, and how environment shapes their earliest phases—connecting JWST imaging to multi-wavelength tracers of feedback and star formation.
+        </p>
+        <div class="research-grid">
+          <article class="card current-research-copy">
+            <span class="pill">Current project · 2025 (PhD)</span>
+            <h3>The radio–mid‑infrared signature of cluster evolution</h3>
+            <p class="muted">
+              We investigate how 3 GHz radio continuum and mid-infrared (21 µm) emission jointly trace the life cycle of massive stars and stellar clusters, from their dust-embedded formation to feedback-dominated evolutionary stages, across nearby galaxies.            </p>
+            <p class="muted">
+              Traditionally, radio and infrared star-formation tracers have been calibrated using integrated galaxy measurements, where diverse regions are spatially blended and the underlying physics is effectively averaged. Establishing the radio–mid-infrared connection on the scale of individual star-forming regions and stellar clusters is therefore essential, as it enables phase-resolved tracking of cluster evolution (from embedded to exposed), isolates environmental dependencies, and provides dust-insensitive diagnostics in regimes where optical tracers break down.            </p>
+          </article>
+
+          <figure class="compare-slider" data-compare="true" data-autoplay="true" aria-label="Image comparison: slide to compare two views">
+            <img class="compare-bottom" src="assets/11.png" alt="Current research image 1" draggable="false" />
+            <img class="compare-top" src="assets/22.png" alt="Current research image 2" draggable="false" />
+            <div class="slider-credit top left active" data-compare-for="top">
+              VLA 3GHz
+            </div>
+            <div class="slider-credit top right" data-compare-for="bottom">
+              VLA+Effelsberg 8GHz
+            </div>
+
+            <div class="slider-credit left active" data-compare-for="top">
+              Hassani et al. in prep 2025
+            </div>
+            <div class="slider-credit right" data-compare-for="bottom">
+              K.T. Chyzy, M. Ehle, R. Beck 2007 A&amp;A.
+            </div>
+            <div class="compare-handle" aria-hidden="true"></div>
+            <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Compare images" />
+          </figure>
+        </div>
+      </section>
+
       <section id="papers">
         <h2 class="section-title">Published papers as first author</h2>
         <p class="section-subtitle">
@@ -928,6 +1191,16 @@ Recent lead-author work using multi-wavelength data from JWST, HST, ALMA, and As
               <img src="assets/1.png" alt="JWST mid-infrared composite of nearby galaxies" class="active" data-index="0" />
               <img src="assets/2.png" alt="Source catalog overlays from the Hidden Life of Stars paper" data-index="1" />
               <img src="assets/x1.png" alt="Source catalog overlays from the Hidden Life of Stars paper" data-index="2" />
+
+              <div class="slider-caption active" data-caption-index="0">
+                Assembly of young, optically bright stellar clusters traced by strong 21&nbsp;µm emission in nearby galaxies.
+              </div>
+              <div class="slider-caption" data-caption-index="1">
+                Dusty, embedded stellar clusters that are faint in Hα, revealed by bright 21&nbsp;µm emission in nearby galaxies.
+              </div>
+              <div class="slider-caption" data-caption-index="2">
+                Spectral energy distribution of a rare dusty stellar cluster with little/no bright Hα emission, observed with JWST and HST.
+              </div>
 
               <div class="slider-controls">
                 <button type="button" class="slider-control active" data-target="0">01</button>
@@ -950,6 +1223,9 @@ My research with JWST has defined a new framework for tracing how stellar cluste
           <article class="card paper-card">
             <div class="paper-figure">
               <img src="assets/astrosat_poster_png_1.jpg" alt="AstroSat ultraviolet atlas montage" />
+              <div class="slider-caption static active">
+                AstroSat/UVIT observations of 31 nearby galaxies in 9 filters from 1480&nbsp;Å to 2790&nbsp;Å.
+              </div>
             </div>
             <div class="paper-body">
               <span class="pill">2024 · ApJS</span>
@@ -964,8 +1240,13 @@ Using AstroSat/UVIT, I calibrated over 150 maps of 31 nearby galaxies at ~1.4″
             </div>
           </article>
           <article class="card paper-card">
-            <div class="paper-figure">
-              <img src="assets/age_1.jpg" alt="21 micron compact source population visualization" />
+            <div class="paper-figure-stack">
+              <div class="paper-figure">
+                <img src="assets/age_1.jpg" alt="21 micron compact source population visualization" />
+              </div>
+              <div class="paper-figure-caption">
+                A strong correlation between L<sub>21&nbsp;µm</sub> and dust-corrected L<sub>Hα</sub> holds over &gt;5 orders of magnitude in stellar clusters of nearby galaxies, linking mid‑infrared dust emission to the optically bright phase of stellar clusters.
+              </div>
             </div>
             <div class="paper-body">
               <span class="pill">2023 · ApJL</span>
@@ -980,6 +1261,9 @@ My research asks how long massive clusters remain hidden in their dusty, embedde
           <article class="card paper-card">
             <div class="paper-figure">
               <img src="assets/b22.png" alt="Spectral energy distribution fit for the Magellanic Clouds" />
+              <div class="slider-caption static active">
+                First resolved magnetic-field strength maps of the LMC and SMC.
+              </div>
             </div>
             <div class="paper-body">
               <span class="pill">2022 · MNRAS</span>
@@ -1089,6 +1373,7 @@ Using single-dish and interferometric observations spanning three frequency band
       document.querySelectorAll(".slider").forEach((slider) => {
         const slides = slider.querySelectorAll('img[data-index]');
         const buttons = slider.querySelectorAll(".slider-control");
+        const captions = slider.querySelectorAll("[data-caption-index]");
 
         if (!slides.length) return;
 
@@ -1102,6 +1387,12 @@ Using single-dish and interferometric observations spanning three frequency band
           buttons.forEach((btn, idx) => {
             btn.classList.toggle("active", idx === index);
           });
+          if (captions.length) {
+            captions.forEach((caption) => {
+              const captionIndex = Number(caption.dataset.captionIndex);
+              caption.classList.toggle("active", captionIndex === index);
+            });
+          }
         };
 
         if (buttons.length) {
@@ -1129,11 +1420,149 @@ Using single-dish and interferometric observations spanning three frequency band
           if (autoplayId) clearInterval(autoplayId);
         };
 
-        slider.addEventListener("mouseenter", stopAutoplay);
-        slider.addEventListener("mouseleave", startAutoplay);
+        const pauseOnHover = slider.dataset.pauseOnHover !== "false";
+        if (pauseOnHover) {
+          slider.addEventListener("mouseenter", stopAutoplay);
+          slider.addEventListener("mouseleave", startAutoplay);
+        }
 
         showSlide(0);
         startAutoplay();
+      });
+
+      document.querySelectorAll('[data-compare="true"]').forEach((slider) => {
+        const range = slider.querySelector(".compare-range");
+        if (!range) return;
+        const labels = slider.querySelectorAll("[data-compare-for]");
+
+        const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
+        let activeSide = "top";
+
+        const updateLabels = (value) => {
+          // Use a small deadband around center to avoid flicker while hovering near 50%.
+          const nextSide =
+            value > 52 ? "top" :
+            value < 48 ? "bottom" :
+            activeSide;
+          activeSide = nextSide;
+
+          labels.forEach((el) => {
+            el.classList.toggle("active", el.dataset.compareFor === activeSide);
+          });
+        };
+
+        const setPos = (pct) => {
+          const value = clamp(pct, 0, 100);
+          slider.style.setProperty("--pos", `${value}%`);
+          range.value = String(value);
+          updateLabels(value);
+        };
+
+        let dragging = false;
+        let dragStartX = 0;
+        let dragStartValue = 50;
+        let dragRect;
+        let hasInteracted = false;
+        let autoplayRafId;
+        let autoplayDir = 1;
+        let autoplayLastT = 0;
+
+        range.addEventListener("input", () => setPos(Number(range.value)));
+
+        slider.addEventListener("pointerdown", (e) => {
+          dragging = true;
+          slider.classList.add("dragging");
+          hasInteracted = true;
+          slider.setPointerCapture?.(e.pointerId);
+          dragRect = slider.getBoundingClientRect();
+          dragStartX = e.clientX;
+          dragStartValue = Number(range.value) || 50;
+        });
+
+        slider.addEventListener("pointermove", (e) => {
+          if (!dragging) return;
+          const rect = dragRect || slider.getBoundingClientRect();
+          if (!rect.width) return;
+          const deltaPct = ((e.clientX - dragStartX) / rect.width) * 100;
+          setPos(dragStartValue + deltaPct);
+        });
+
+        const stopDrag = () => {
+          dragging = false;
+          slider.classList.remove("dragging");
+        };
+        slider.addEventListener("pointerup", stopDrag);
+        slider.addEventListener("pointercancel", stopDrag);
+        slider.addEventListener("pointerleave", stopDrag);
+
+        setPos(Number(range.value) || 50);
+
+        const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+        if (!prefersReducedMotion) {
+          // Quick demo sweep: center → right → left → center (stops on first interaction).
+          const animateTo = (from, to, durationMs) =>
+            new Promise((resolve) => {
+              const start = performance.now();
+              const tick = (t) => {
+                if (hasInteracted) return resolve();
+                const p = Math.min(1, (t - start) / durationMs);
+                const eased = 1 - Math.pow(1 - p, 3);
+                setPos(from + (to - from) * eased);
+                if (p < 1) requestAnimationFrame(tick);
+                else resolve();
+              };
+              requestAnimationFrame(tick);
+            });
+
+          // Run once shortly after load.
+          setTimeout(async () => {
+            if (hasInteracted) return;
+            const startVal = Number(range.value) || 50;
+            await animateTo(startVal, 72, 420);
+            await animateTo(72, 28, 620);
+            await animateTo(28, 50, 520);
+          }, 350);
+        }
+
+        // Autoplay sweep (until first interaction).
+        const autoplayEnabled = slider.dataset.autoplay === "true";
+        if (autoplayEnabled && !prefersReducedMotion) {
+          const min = 18;
+          const max = 82;
+          const speedPctPerSec = 18; // smooth, but clearly visible
+
+          const tick = (t) => {
+            if (hasInteracted) return;
+            if (!autoplayLastT) autoplayLastT = t;
+            const dt = (t - autoplayLastT) / 1000;
+            autoplayLastT = t;
+
+            const current = Number(range.value) || 50;
+            let next = current + autoplayDir * speedPctPerSec * dt;
+            if (next >= max) {
+              next = max;
+              autoplayDir = -1;
+            } else if (next <= min) {
+              next = min;
+              autoplayDir = 1;
+            }
+            setPos(next);
+            autoplayRafId = requestAnimationFrame(tick);
+          };
+
+          // Start after the short demo sweep finishes.
+          setTimeout(() => {
+            if (hasInteracted) return;
+            autoplayRafId = requestAnimationFrame(tick);
+          }, 2000);
+
+          const stopAutoplay = () => {
+            hasInteracted = true;
+            if (autoplayRafId) cancelAnimationFrame(autoplayRafId);
+          };
+          slider.addEventListener("pointerdown", stopAutoplay, { once: true });
+          range.addEventListener("input", stopAutoplay, { once: true });
+        }
       });
 
     </script>
