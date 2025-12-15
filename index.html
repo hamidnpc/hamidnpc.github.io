@@ -34,7 +34,7 @@
 
       body {
         font-family: "Space Grotesk", "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-        background: linear-gradient(120deg, #fffdf8, #ffe9d7 45%, #f7e1ff 100%);
+        background: linear-gradient(180deg, #f6f7f9 0%, #eef0f3 100%);
         color: var(--text);
         line-height: 1.6;
         min-height: 100vh;
@@ -42,12 +42,7 @@
       }
 
       .glow {
-        position: fixed;
-        inset: 0;
-        background: radial-gradient(circle at 15% 20%, rgba(255, 122, 24, 0.22), transparent 45%), radial-gradient(circle at 80% 10%, rgba(143, 87, 255, 0.2), transparent 40%), radial-gradient(circle at 70% 80%, rgba(255, 186, 73, 0.18), transparent 45%);
-        opacity: 0.75;
-        pointer-events: none;
-        filter: blur(80px);
+        display: none;
       }
 
       header {
@@ -95,10 +90,15 @@
         transition: color 0.2s ease, background-color 0.2s ease;
       }
 
+      .nav-short {
+        display: none;
+      }
+
       .nav-links a.active,
       .nav-links a:hover {
-        color: var(--text);
-        background-color: rgba(15, 23, 42, 0.06);
+        color: #fff;
+        background: linear-gradient(120deg, #6d28d9, #8b5cf6, #a78bfa);
+        box-shadow: 0 12px 25px rgba(109, 40, 217, 0.25);
       }
 
       .nav-cta {
@@ -162,10 +162,12 @@
         aspect-ratio: 1 / 1;
         border-radius: 50%;
         padding: 12px;
-        background: linear-gradient(135deg, rgba(255, 122, 24, 0.8), rgba(143, 87, 255, 0.8));
+        background: linear-gradient(135deg, rgba(255, 122, 24, 0.85), rgba(143, 87, 255, 0.85), rgba(255, 216, 25, 0.55));
+        background-size: 220% 220%;
         position: relative;
         align-self: flex-start;
         margin-top: -1.5rem;
+        animation: profileHalo 8.5s ease-in-out infinite, profileFloat 6.5s ease-in-out infinite;
       }
 
       .profile-frame img {
@@ -176,6 +178,37 @@
         border: 6px solid rgba(255, 255, 255, 0.85);
         background: #fff;
         box-shadow: 0 25px 40px rgba(17, 24, 39, 0.15);
+      }
+
+      @keyframes profileHalo {
+        0% {
+          background-position: 0% 40%;
+          filter: saturate(1) brightness(1);
+        }
+        50% {
+          background-position: 100% 60%;
+          filter: saturate(1.15) brightness(1.03);
+        }
+        100% {
+          background-position: 0% 40%;
+          filter: saturate(1) brightness(1);
+        }
+      }
+
+      @keyframes profileFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-6px);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .profile-frame {
+          animation: none;
+        }
       }
 
       main {
@@ -988,15 +1021,39 @@
       @media (max-width: 720px) {
         nav {
           flex-direction: column;
-          align-items: flex-start;
+          align-items: stretch;
+          padding: 0.95rem 1rem;
+        }
+
+        .nav-links {
+          width: 100%;
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 0.6rem;
+        }
+
+        .nav-links a {
+          width: 100%;
+          text-align: center;
+          padding: 0.55rem 0.7rem;
+          font-size: 0.9rem;
+        }
+
+        .nav-long {
+          display: none;
+        }
+
+        .nav-short {
+          display: inline;
         }
 
         .hero-cta {
           width: 100%;
+          flex-direction: column;
         }
 
         .hero-cta a {
-          flex: 1;
+          width: 100%;
           text-align: center;
         }
 
@@ -1007,6 +1064,17 @@
 
         .timeline-item::before {
           display: none;
+        }
+      }
+
+      @media (max-width: 420px) {
+        .nav-links {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .nav-links a {
+          font-size: 0.86rem;
+          padding: 0.5rem 0.6rem;
         }
       }
     </style>
@@ -1020,7 +1088,12 @@
         <li><a href="#about">About</a></li>
         <li><a href="#neloura">Neloura</a></li>
         <li><a href="#advocacy">Advocacy</a></li>
-        <li><a href="#current-research">Current research</a></li>
+        <li>
+          <a href="#current-research">
+            <span class="nav-long">Current research</span>
+            <span class="nav-short">Research</span>
+          </a>
+        </li>
         <li><a href="#papers">Papers</a></li>
         <li><a href="#videos">Talks</a></li>
         <li><a class="nav-cta" href="#contact">Contact</a></li>
