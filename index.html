@@ -641,6 +641,36 @@
         margin-bottom: 0.8rem;
       }
 
+          .video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.8rem;
+  align-items: stretch;
+}
+
+.video-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.video-embed {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 25px 45px rgba(15, 23, 42, 0.2);
+}
+
+.video-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
       .imagery-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -966,35 +996,7 @@ Using single-dish and interferometric observations spanning three frequency band
         </div>
       </section>
 
-      .video-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.8rem;
-  align-items: stretch;
-}
-
-.video-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
-}
-
-.video-embed {
-  position: relative;
-  width: 100%;
-  padding-top: 56.25%; /* 16:9 */
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: 0 25px 45px rgba(15, 23, 42, 0.2);
-}
-
-.video-embed iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-}
+  
 
 
      <section id="videos">
