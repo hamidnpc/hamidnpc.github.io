@@ -1124,7 +1124,7 @@ img {
 .paper-figure,
 .spotlight-carousel,
 .neloura-slider {
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.10);
 }
 
 nav,
@@ -1138,6 +1138,13 @@ nav,
 
 .neloura-slider img {
   filter: none;
+}
+
+      section,
+.card,
+.paper-card {
+  content-visibility: auto;
+  contain-intrinsic-size: 600px;
 }
 
 .neloura-slider {
@@ -1320,7 +1327,7 @@ From 2023 to 2024, I served in several leadership and advocacy roles dedicated t
               <button type="button" class="compare-tab" data-compare-set="ngc3627">NGC 3627</button>
             </div>
 
-            <figure class="compare-slider" data-compare="true" data-autoplay="true" data-compare-active="ngc4254" aria-label="Image comparison: slide to compare two views">
+            <figure class="compare-slider" data-compare="true" data-autoplay="false" data-compare-active="ngc4254" aria-label="Image comparison: slide to compare two views">
               <img class="compare-bottom" src="assets/11.png" alt="NGC 4254 VLA+Effelsberg 8 GHz map" draggable="false" />
               <img class="compare-top" src="assets/22.png" alt="NGC 4254 VLA 3 GHz map" draggable="false" />
             <div class="slider-credit top left active" data-compare-for="top">
