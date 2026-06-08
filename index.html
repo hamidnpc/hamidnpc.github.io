@@ -1113,6 +1113,52 @@
           padding: 0.5rem 0.6rem;
         }
       }
+
+      /* Performance fixes for smoother scrolling */
+img {
+  max-width: 100%;
+}
+
+.card,
+.paper-body,
+.paper-figure,
+.spotlight-carousel,
+.neloura-slider {
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+}
+
+nav,
+.neloura-overlay,
+.slider-caption,
+.slider-credit,
+.compare-tab {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.neloura-slider img {
+  filter: none;
+}
+
+.neloura-slider {
+  min-height: min(760px, 85vh);
+}
+
+@media (max-width: 720px) {
+  .neloura-slider {
+    min-height: 520px;
+  }
+
+  .spotlight-carousel {
+    min-height: 420px;
+  }
+
+  .compare-slider {
+    min-height: 280px;
+  }
+}
+
+      
     </style>
   </head>
   <body>
